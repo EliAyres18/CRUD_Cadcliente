@@ -1,0 +1,24 @@
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+	<display-name>Archetu</display-name>
+	<servlet>
+		<servlet-name>CRUD Cadastro de Cliente</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> <!-- Aqui é definida a classe q representa o servlet do Jersey -->
+		<init-param> <!-- Aqui começa um bloco que informa o pacote q irá conter as classes q representam o serviço e contem os metodos -->
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>br.jus.trf5.sistemas.crud.cadastro.cliente.service</param-value>
+		</init-param>
+		<init-param> <!-- Aqui saõ definidos outros paramentros, neste pra API de JSON do Jersey, pra realizar o mapeamento q faz a conversão das requisisções no formato JSON -->
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping> <!-- Aqui é conf a URL pra acesso aos recursos do servidor, ou seja, ao CRUD -->
+		<servlet-name>CRUD Cadastro de Cliente</servlet-name>
+		<url-pattern>/rest/*</url-pattern> <!-- é definido o caminho padrão de acesso as URLs do serviço -->
+	</servlet-mapping>
+</web-app>

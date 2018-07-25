@@ -1,0 +1,35 @@
+<!-- No persistence podemos configurálo
+para informar a classe ClienteModel, o provedorde acesso a dados, o dialeto do SGBD e os dados para conexão com o banco de dados, ou seja, o
+endereço do banco, o usuário e senha. -->
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="app_crud_cliente"> <!-- Recebe o este valor  porque é o nome que sera inf na conf do EntityManagerFactory pra q posso ser identificado a conf do persistence -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider><!-- aqui é visto o provedor ORM q implementa o JPA, neste caso o Hibernate-->
+		<class>br.jus.trf5.sistemas.crud.cadastro.cliente.model.ClienteModel</class><!-- Informada a class pra mapeamento com o banco-->
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /><!-- driver do banco, aqui o postgre -->
+			
+
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://TacaratuD:5432/teste" /><!-- URL de acesso ao banco -->
+			<property name="javax.persistence.jdbc.user" value="sti" /> <!-- usuário do banco -->
+			<property name="javax.persistence.jdbc.password" value="sti_trf" /><!-- senha.de acesso -->
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="" />
+
+			<property name="hibernate.connection.provider_class" value="org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider" />
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="100" />
+			<property name="hibernate.c3p0.timeout" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="100" />
+			<property name="hibernate.c3p0.idle_test_period" value="900" />
+		</properties>
+	</persistence-unit>
+
+</persistence>
